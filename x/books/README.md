@@ -35,7 +35,7 @@ This project has the following main features:
             "average_score": 5.0
         }
 
-If the requested ISBN number isn’t in the database, the website returns a 404 error.
+    If the requested ISBN number isn’t in the database, the website returns a 404 error.
 
 - **SQL:** The project uses *raw SQL commands* (as via *SQLAlchemy’s execute method*) in order to make database queries.
 

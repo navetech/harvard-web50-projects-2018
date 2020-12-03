@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+    <script id="user" type="text/x-handlebars-template">
+        {% raw -%}
+            <li id="user{{ user.id }}" class="list-group-item ln-container01 user-item {{ item_show_hide }}">
+            </li>
+        {%- endraw %}
+    </script>
+
+    <script id="user-content" type="text/x-handlebars-template">
+        {% raw -%}
+            <a class="ln-highlight" href="/message-to-user/{{ user.id }}">{{ user.name }}</a>
+            registered on
+            <span class="ln-highlight">{{ user.timestamp }}</span>
+            {{#if user.current_logins }}
+                online on
+                <span class="ln-highlight">{{ user.current_logins.[0].timestamp }}</span>
+            {{else}}
+                offline
+            {{/if}}
+        {%- endraw %}
+    </script>
+
+    <script id="user-none" type="text/x-handlebars-template">
+        {% raw -%}
+            <li id="user-null" class="list-group-item ln-container01 {{ item_show_hide }}">No users</li>
+        {%- endraw %}
+    </script>
+
+    <script src="/static/scripts/users.js"></script>
+{% endblock %}
+
+{% block title %}
+    Users
+{% endblock %}
+
+{% block main %}
+    <ul id="users" class="list-group ln-group-width-auto">
+    </ul>
+{% endblock %}

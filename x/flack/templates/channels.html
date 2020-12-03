@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+    <script id="channel" type="text/x-handlebars-template">
+        {% raw -%}
+            <li id="channel{{ channel.id }}" class="list-group-item ln-container01 channel-item {{ item_show_hide }}">
+                <a class="ln-highlight" href="/channel-messages/{{ channel.id }}">{{ channel.name }}</a>
+                created by
+                <a class="ln-highlight" href="/message-to-user/{{ channel.creator.id }}">{{ channel.creator.name }}</a>
+                on
+                <span class="ln-highlight">{{ channel.timestamp }}</span>
+            </li>
+        {%- endraw %}
+    </script>
+
+    <script id="channel-none" type="text/x-handlebars-template">
+        {% raw -%}
+            <li id="channel-null" class="list-group-item ln-container01 {{ item_show_hide }}">No channels</li>
+        {%- endraw %}
+    </script>
+
+    <script src="/static/scripts/channels.js"></script>
+{% endblock %}
+
+{% block title %}
+    Channels
+{% endblock %}
+
+{% block main %}
+    <ul class="list-group">
+        <li class="list-group-item ln-container01">
+            <form action="/channels" method="post">
+                <div class="form-group">
+                    <label for="name">Channel Name</label>
+                    <input autocomplete="on" required='on' autofocus class="form-control"  type="text" id="name" name="name" placeholder="Channel Name">
+                </div>
+                <button class="btn btn-dark" type="submit">Create Channel</button>
+            </form>
+        </li>
+    </ul>
+
+    <ul id="channels" class="list-group pt-4 ln-group-width-auto">
+    </ul>
+{% endblock %}

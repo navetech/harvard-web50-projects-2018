@@ -1,0 +1,31 @@
+{% extends "messages.html" %}
+
+{% block messages_scripts %}
+    <script id="user" type="text/x-handlebars-template">
+        {% raw -%}
+            <li class="list-group-item ln-container01 ln-h03">
+                <a class="ln-highlight" href="/message-to-user/{{ user.id }}">{{ user.name }}</a>
+                {{#if user.current_logins }}
+                <span class="status-on">online</span> on
+                <span class="ln-highlight">{{ user.current_logins.[0].timestamp }}</span>
+            {{else}}
+            <span class="status-off">offline</span>
+            {{/if}}
+                registered on
+                <span class="ln-highlight">{{ user.timestamp }}</span>
+            </li>
+        {%- endraw %}
+    </script>
+
+    <script src="/static/scripts/user-messages.js"></script>
+
+    {% block user_messages_scripts %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block messages_main %}
+    <ul id="user-id" class="list-group ln-group-width-auto" data-id={{ user.id }}>
+    </ul>
+{% endblock %}
+

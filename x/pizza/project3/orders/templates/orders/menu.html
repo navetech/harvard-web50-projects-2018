@@ -1,0 +1,14 @@
+{% extends "orders/base.html" %}
+
+
+{% block title %}
+    {% if settings.menu_label %}
+        {{ settings.menu_label.translated.words }}
+    {% else %}
+        Menu
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% include "orders/menu-menu.html" %}
+{% endblock %}
